@@ -17,7 +17,7 @@ export default function PersonInfo(props) {
 
             <ButtonGroup className="button-group" aria-label="Basic example">
 
-                <Button className="text-info" variant="light">
+                <Button className="text-info" variant="light" onClick={props.editMode}>
                     <FontAwesomeIcon icon={faEdit} />
                 </Button>
 
@@ -34,4 +34,5 @@ export default function PersonInfo(props) {
 
 PersonInfo.propTypes = {
     person: PropType.object,
+    editMode: PropType.func,
 };

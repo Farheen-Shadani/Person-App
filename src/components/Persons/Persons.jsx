@@ -10,7 +10,7 @@ export default function Persons() {
             "name": "Farheen",
             "age": 24,
             "description": "Future CSS Topper",
-            "isEditMode": true
+            "isEditMode": false
         },
 
         {
@@ -24,7 +24,7 @@ export default function Persons() {
             "name": "Uroosa",
             "age": 23,
             "description": "Doctor",
-            "isEditMode": true
+            "isEditMode": false
         },
 
         {
@@ -38,10 +38,15 @@ export default function Persons() {
             "name": "Mahrukh",
             "age": 20,
             "description": "Aalima",
-            "isEditMode": true
+            "isEditMode": false
         },
 
     ]
+
+    const enableEditMode = () => {
+        // props.person.isEditMode = true;
+        alert("hello world")
+    }
 
     return (
 
@@ -50,7 +55,7 @@ export default function Persons() {
             <h1>Persons</h1>
 
             {
-                personsData.map(person => <Person person={person} key={person.name} />)
+                personsData.map(person => <Person person={person} editMode={enableEditMode} key={person.name} />)
             }
 
         </div >

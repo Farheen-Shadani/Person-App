@@ -9,12 +9,13 @@ export default function Person(props) {
 
     return (
 
-        <Card className="Person" style={{ width: '18rem' }}>
+        <Card className="Person">
+
             {
                 props.person.isEditMode ?
                     <PersonEdit person={props.person} /> :
-                    <PersonInfo person={props.person} />
-
+                    <PersonInfo person={props.person}
+                        editMode={props.editMode} />
             }
 
         </Card>
@@ -24,4 +25,5 @@ export default function Person(props) {
 
 Person.propTypes = {
     person: PropType.object,
+    editMode: PropType.func,
 };
