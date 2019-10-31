@@ -1,64 +1,94 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Persons.css'
 import Person from './Person/Person';
 
-export default function Persons() {
+export default class Persons extends Component {
+    constructor(props) {
 
-    const personsData = [
+        super(props);
 
-        {
-            "name": "Farheen",
-            "age": 24,
-            "description": "Future CSS Topper",
-            "isEditMode": false
-        },
+        this.state = {
+            personsData: [
 
-        {
-            "name": "Nageen",
-            "age": 26,
-            "description": "Pharmacist",
-            "isEditMode": false
-        },
+                {
+                    "name": "Farheen",
+                    "age": 24,
+                    "description": "Future CSS Topper",
+                    "isEditMode": false
+                },
 
-        {
-            "name": "Uroosa",
-            "age": 23,
-            "description": "Doctor",
-            "isEditMode": false
-        },
+                {
+                    "name": "Nageen",
+                    "age": 26,
+                    "description": "Pharmacist",
+                    "isEditMode": false
+                },
 
-        {
-            "name": "Hira",
-            "age": 24,
-            "description": "Engineer",
-            "isEditMode": false
-        },
+                {
+                    "name": "Uroosa",
+                    "age": 23,
+                    "description": "Doctor",
+                    "isEditMode": false
+                },
 
-        {
-            "name": "Mahrukh",
-            "age": 20,
-            "description": "Aalima",
-            "isEditMode": false
-        },
+                {
+                    "name": "Hira",
+                    "age": 24,
+                    "description": "Engineer",
+                    "isEditMode": false
+                },
 
-    ]
+                {
+                    "name": "Mahrukh",
+                    "age": 20,
+                    "description": "Aalima",
+                    "isEditMode": false
+                },
 
-    const enableEditMode = () => {
-        // props.person.isEditMode = true;
-        alert("hello world")
+            ]
+        }
+
     }
 
-    return (
+    toggleEditMode = (person, newValue) => {
 
-        <div className="Persons">
-
-            <h1>Persons</h1>
-
-            {
-                personsData.map(person => <Person person={person} editMode={enableEditMode} key={person.name} />)
+        this.setState({
+            personsData: this.state.personsData.map(personClicked => {
+                personClicked.name === person.name ?
+                    personClicked.isEditMode = newValue :
+                    personClicked.isEditMode = false
+                return personClicked;
             }
+            )
+        })
+    }
 
-        </div >
+    deletePerson = (person) => {
 
-    )
+        this.setState({
+            personsData: this.state.personsData.filter(personClicked => {
+                return personClicked.name !== person.name
+            }
+            )
+        })
+    }
+
+    render() {
+        return (
+
+            <div className="Persons" >
+
+                <h1>Persons</h1>
+                <div className="my-persons">
+                    {
+                        this.state.personsData.map(person => <Person person={person} key={person.name}
+                            enableEditMode={() => this.toggleEditMode(person, true)}
+                            disableEditMode={() => this.toggleEditMode(person, false)}
+                            deletePerson={() => this.deletePerson(person)} />)
+                    }
+                </div>
+            </div >
+
+        );
+    }
 }

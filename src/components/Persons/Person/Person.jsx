@@ -13,9 +13,12 @@ export default function Person(props) {
 
             {
                 props.person.isEditMode ?
-                    <PersonEdit person={props.person} /> :
+                    <PersonEdit person={props.person} 
+                    disableEditMode={props.disableEditMode}/> :
                     <PersonInfo person={props.person}
-                        editMode={props.editMode} />
+                    enableEditMode={props.enableEditMode} 
+                    deletePerson={props.deletePerson} />
+
             }
 
         </Card>
@@ -25,5 +28,7 @@ export default function Person(props) {
 
 Person.propTypes = {
     person: PropType.object,
-    editMode: PropType.func,
+    enableEditMode: PropType.func,
+    disableEditMode: PropType.func,
+    deletePerson: PropType.func,
 };

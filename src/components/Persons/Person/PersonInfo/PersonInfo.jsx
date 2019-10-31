@@ -17,11 +17,11 @@ export default function PersonInfo(props) {
 
             <ButtonGroup className="button-group" aria-label="Basic example">
 
-                <Button className="text-info" variant="light" onClick={props.editMode}>
+                <Button className="text-info" variant="light" onClick={props.enableEditMode}>
                     <FontAwesomeIcon icon={faEdit} />
                 </Button>
 
-                <Button className="text-danger" variant="light">
+                <Button className="text-danger" variant="light" onClick={props.deletePerson}>
                     <FontAwesomeIcon icon={faTrash} />
                 </Button>
 
@@ -34,5 +34,6 @@ export default function PersonInfo(props) {
 
 PersonInfo.propTypes = {
     person: PropType.object,
-    editMode: PropType.func,
+    enableEditMode: PropType.func,
+    deletePerson: PropType.func,
 };
